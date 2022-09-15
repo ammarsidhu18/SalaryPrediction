@@ -51,13 +51,16 @@ After loading the data, inspecting the dataset's features (employee qualificatio
   ![boxanddensplots](https://user-images.githubusercontent.com/46492654/190313402-4911213c-f01c-4d12-b32a-30def873dd31.png)
   
 * Created bivariate data visualizations comparing continuous and categorical features to target variable:
+
   - Scatter Plots:
+  
   ![salaryVsexperience](https://user-images.githubusercontent.com/46492654/190313475-5bd6c12b-0f1a-45b1-b24e-cb86ac0ac4b3.png)
   
   ![salaryVsmetropolis](https://user-images.githubusercontent.com/46492654/190313517-999d9e53-165b-4a4e-a34a-733128802094.png)
   
   
   - Violin Plots:
+  
   ![salaryVseducation](https://user-images.githubusercontent.com/46492654/190314032-f7707693-9833-49c2-9e62-f10fb17bb610.png)
   
   ![salaryVsindustry](https://user-images.githubusercontent.com/46492654/190314087-bef3197b-e282-4126-9483-0c5dd4c85cf9.png)

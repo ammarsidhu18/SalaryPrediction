@@ -8,17 +8,17 @@ Created a regression model with **MSE score of 355** on employee salary data giv
 
 * **Data**: The raw dataset for this problem is split into 3 smaller datasets as CSVs. There is 1 training dataset containing the description of the employee as stated above, and their corresponding salary. From this training dataset, 20% was split into a seperate test dataset with corresponding employee salary in order to compute the accuracy and error of the models. In order to test the model, predictions will be made on the third dataset, the testing dataset, which comprises of job descriptions for an employee with no corresponding salaries. This testing dataset will act as a substitute to real-world data so that the model can be used for salary prediction. Data Dictionary - The features (job descriptions for employees) used to predict the target variable (employee salary):
 
-1. jobType - position held (CEO, CFO, CTO, Vice President, Manager, Janitor, and senior or junior position)
+  1. jobType - position held (CEO, CFO, CTO, Vice President, Manager, Janitor, and senior or junior position)
 
-2. degree - type of degree (Doctoral, Masters, Bachelors, High School, or None)
+  2. degree - type of degree (Doctoral, Masters, Bachelors, High School, or None)
 
-3. major - type of major (Biology, Business, Chemistry, Computer Science, Engineering, Literature, Math, Physics, or None)
+  3. major - type of major (Biology, Business, Chemistry, Computer Science, Engineering, Literature, Math, Physics, or None)
 
-4. industry - type of industry (Auto, Education, Finance, Health, Oil, Service, or Web)
+  4. industry - type of industry (Auto, Education, Finance, Health, Oil, Service, or Web)
 
-5. yearsExperience - experience as number of years
+  5. yearsExperience - experience as number of years
 
-6. milesFromMetropolis - distance, in miles, from a metropolis
+  6. milesFromMetropolis - distance, in miles, from a metropolis
 
 * **Success Metric**: To reduce the difference between predicted salaries and actual employee salaries through minimizing/lowering the **Mean Squarred Error (MSE)** of our model's salary predictions to **below 360 (MSE < 360)**. 
 
@@ -35,23 +35,31 @@ After loading the data, inspecting the dataset's features (employee qualificatio
 * Removed salaries that were listed at or below $0 because they were all industry-based advanced roles that pay well. Having employees with these positions and $0 salaries would severely impact our predictions.
 * Explored target variable (salary) through assessing normality of the variable and finding outliers.
   - Histogram:
+  ![salaryHist](https://user-images.githubusercontent.com/46492654/190313235-bf1aba3b-493b-45f6-8095-c906409145a8.png)
   
   - Box and Distribution Plots:
+  ![salaryBoxDensPlot](https://user-images.githubusercontent.com/46492654/190313285-b257c551-2362-4ba4-993f-70627a870702.png)
 
 * Computed the skew and kurtosis for the target variable. Found that since the skewness was less than 0.5, the distribution of the salary was very symmetric, and the low kurtosis value indicated that the data did not have many outliers.
 * Determined that outlier salaries found through IQR inspection were above the upper bound. An overwhelming majority of salaries that exceeded the upper bound were being earned by employees who retained advanced positions. Consequently, their salaries being high made sense, and they were not removed from the dataset. 
 * Created univariate data visualizations of all the features through plotting:
   - Bar Plots:
+  ![bargraphs](https://user-images.githubusercontent.com/46492654/190313339-7c9ccd85-e3e3-48dc-acd8-3eda1db376a1.png)
   
   - Box and Density Plots:
+  ![boxanddensplots](https://user-images.githubusercontent.com/46492654/190313402-4911213c-f01c-4d12-b32a-30def873dd31.png)
   
 * Created bivariate data visualizations comparing continuous and categorical features to target variable:
   - Scatter Plots:
+  ![salaryVsexperience](https://user-images.githubusercontent.com/46492654/190313475-5bd6c12b-0f1a-45b1-b24e-cb86ac0ac4b3.png)
   
   - Violin Plots:
+  ![salaryVsmetropolis](https://user-images.githubusercontent.com/46492654/190313517-999d9e53-165b-4a4e-a34a-733128802094.png)
+  
 * Removed useless categorical features, `jobID` and `companyID`, because they have no impact on employee's salary.
 * Converted categorical features to numerical data via **OneHotEncoding**, so they can be used for salary prediction.
 * Performed correlation analysis through creating a heatmap of all features, and the target:
+![heatmap](https://user-images.githubusercontent.com/46492654/190313585-d4089252-9fe7-401b-a954-3918e3e69b16.png)
 
 * Concluded from correlation analysis that no multicolinearity was present amongst the features (predictor variables), so none of the features were dropped. Moreover, the `yearsExperience` feature had the highest correlation with salary followed by `jobTypefeature`. This made sense because an employee's salary is highly dependent upon their experience, and the field they work in.
 
@@ -65,8 +73,10 @@ First, I split the data into X (features) and y (target - salary). Then, I split
 * The MSE was reduced while simultaneously improving R^2 through building upon the baseline model by implementing more regression algorithms and tuning their hyperparameters.
 * Furthermore, the data was be standardized to account for the difference in scale between the features.
 * Distribution plot of prediction vs. actual salaries for training data as obtained from Linear Regression Model:
+![trainingPredsVsactual](https://user-images.githubusercontent.com/46492654/190313634-a1aeaa35-9d36-4fec-9881-e0786f1421df.png)
 
 * Distribution plot of prediction vs. actual salaries for testing data as obtained from Linear Regression Model:
+![testingPredsVsactual](https://user-images.githubusercontent.com/46492654/190313659-32dcf597-18f1-44c1-a72a-8034ff3085bb.png)
 
 # Improving Model Performance
 To improve the baseline model, the following 4 algorithms were implemented:
@@ -85,8 +95,7 @@ Which features contribute the most towards a model predicting an employee's sala
 * `yearsExperience`, `milesFromMetropolis`, and `jobTypeJanitor` are by far the most important features for determining/predicting an employee salaries. This makes sense because salaries are highly dependent upon the experience an employee has as well as the distance they need to travel to get to work. Additonally, janitors earn very low salaries, and an employee being a janitor or not as a big impact on predicting what their potential salary could be.
 
 * The least important features for predicting an employee's salary were the majors obtained by an employee, and if they held a CFO or CTO position. Typically, the major one pursues in school has little influence on salary because employers seek candidates with the right skills and experience. Additionally, employees that hold higher up positions are bound to earn high salaries, but this does not tell us about employees working in advanced fields with higher levels of education and more experience. These employees also have the potential to earn a lot.
-
-
+![featureimportance](https://user-images.githubusercontent.com/46492654/190313710-c6d810fe-c9ec-442e-a512-a875981b5183.png)
 
 # Conclusion
 
